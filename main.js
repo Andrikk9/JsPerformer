@@ -451,17 +451,17 @@ const restorantData = {
     openNow: true
 };
 
-function isOpen(prop) {
+function isOpen(openStatus) {
     let answer = '';
-    prop ? answer = 'Закрыто' : answer = 'Открыто';
+    openStatus ? answer = 'Открыто' : answer = 'Закрыто';
 
-    return anwser;
+    return answer;
 }
 
-console.log(isOpen(openNow))
+console.log(isOpen(restorantData.openNow))
 
 function isAverageLunchPriceTrue(fDish, sDish, average) {
-    if (+fDish.price.slice(0, -1) + (sDish.price) < average) {
+    if (+fDish.price.slice(0, -1) + (+sDish.price.slice(0, -1)) < +average.slice(0, -1)) {
         return 'Цена ниже средней';
     } else {
         return 'Цена выше средней';
