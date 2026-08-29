@@ -471,10 +471,15 @@ function isAverageLunchPriceTrue(fDish, sDish, average) {
 console.log(isAverageLunchPriceTrue(restorantData.menu[0], restorantData.menu[1], restorantData.averageLunchPrice));
 
 function transferWaitors(data) {
-    const copy = Object.assign({}, data);
+    const copy = { ...data, waitors: [...data.waitors] };
+
+    console.log(copy.waitors === data.waitors);
 
     copy.waitors[0] = {name: 'Mike', age: 32};
     return copy;
 }
 
-transferWaitors(restorantData);
+const result = transferWaitors(restorantData);
+
+console.log('after (original):', restorantData.waitors[0].name); // should now still be Alice
+console.log('after (copy):', result.waitors[0].name);             // should be Mike
